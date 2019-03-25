@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+// Convers the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
+// @access private
+//
+// @param {Map} $map - Map to convert.
+//
+// @returns {String} A string containing the map's contents.
+@function -jk-bp-serialize($map) {
+  $str: '';
+  @each $key, $value in $map {
+    $str: $str + $key + '=' + -jk-bp-to-em($value) + '&';
+  }
+  $str: str-slice($str, 1, -2);
+  
+  @return $str;
+}
+
+// Find the next key in a map.
+// @access private
+//
+// @param {Map} $map - Map to traverse.
+// @param {Mixed} $key - Key to use as a starting point.
+//
+// @returns {Mixed} The value for the key after `$key`, if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns `null`.
+@function -jk-map-next($map, $key) {
+  
+  // Store the keys of the map as a list
+  $values: map-keys($map);
+  
+  $i: 0;
+  
+  // If the Key Exists, Get the index of the key within the map and add 1 to it for the next breakpoint in the map
+  @if (map-has-key($map, $key)) {
+    $i: index($values, $key) + 1;
+  }
+  
+  // If the key doesn't exist, or it's the last key in the map, return null
+  @if ($i > length($map) or $i == 0) {
+    @return null;
+  }
+    // Otherwise, return the value
+  @else {
+    @return map-get($map, nth($values, $i));
+  }
+  
+}
+
+// Return a list of our named breakpoints less than $key. Useful for dealing with
+// responsive gutters for the grid.
+// @access private
+//
+// @param {String} $key - Key to use as last breakpoint.
+//
+// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
+@function -jk-breakpoints-less-than($key) {
+  $list: ();
+  $found_key: false;
+  
+  @each $name in $-jk-breakpoints-keys {
+    @if ($name == $key) {
+      $found_key: true;
+    }
+    @if not $found_key {
+      $list: append($list, $name);
+    }
+  }
+  @return $list;
+}
+
+// Return a list of our named breakpoints less than $key. Useful for dealing with
+// responsive gutters for the grid.
+// @access private
+//
+// @param {String} $breakpoint - a named or non-named breakpoint.
+//
+// @returns {Array} The list of breakpoints up to and. If $key is auto, returns breakpoints above the zero
+@function -jk-closest-named-breakpoint($breakpoint) {
+  $last: $-jk-zero-breakpoint;
+  $found: false;
+  
+  $value: unitless-calc($breakpoint, 1px);
+  @each $key, $val in $breakpoints {
+    @if not $found {
+      @if unitless-calc($val) > $value {
+        $found: true;
+      } @else {
+        $last: $key;
+      }
+    }
+  }
+  
+  @return $last;
+}
+
+// Get a value for a breakpoint from a responsive config map or single value.
+// - If the config is a single value, return it regardless of `$value`.
+// - If the config is a map and has the key `$value`, the exact breakpoint value is returned.
+// - If the config is a map and does *not* have the breakpoint, the value matching the next lowest breakpoint in the config map is returned.
+// @access private
+//
+// @param {Number|Map} $map - Responsive config map or single value.
+// @param {Keyword} $value - Breakpoint name to use.
+//
+// @return {Mixed} The corresponding breakpoint value.
+@function -jk-get-bp-val($map, $value) {
+  // If the given map is a single value, return it
+  @if type-of($map) == 'number' {
+    @return $map;
+  }
+  
+  
+  // Check if the breakpoint name exists globally
+  @if not map-has-key($breakpoints, $value) {
+    @if type-of($value) == 'number' {
+      $value: -jk-closest-named-breakpoint($value);
+    } @else {
+      @return null;
+    }
+  }
+    // Check if the breakpoint name exists in the local config map
+  @else if map-has-key($map, $value) {
+    // If it does, just return the value
+    @return map-get($map, $value);
+  }
+    // Otherwise, find the next lowest breakpoint and return that value
+  @else {
+    $anchor: null;
+    $found: false;
+    
+    @each $key, $val in $breakpoints {
+      @if not $found {
+        @if map-has-key($map, $key) {
+          $anchor: $key;
+        }
+        @if $key == $value {
+          $found: true;
+        }
+      }
+    }
+    
+    @return map-get($map, $anchor);
+  }
+}

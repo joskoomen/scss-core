@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+////
+/// @group colors
+////
+
+/// Black, white and grays color palette. There must always be a color called `white` and one called `black`.
+/// @type Map
+$color-blackwhite-palette: (
+    'white': #FFFFFF,
+    'lightest' : #F8FAFC,
+    'lighter' : #F1F5F8,
+    'light' : #DAE1E7,
+    'base' :#898592,
+    'dark' :#8795A1,
+    'darker' :#606F7B,
+    'darkest' :#3D4852,
+    'black' : #22292F
+) !default;
+
+@if not map-has-key($color-blackwhite-palette, 'white') {
+  @error 'In $color-blackwhite-palette, you must have a color named "white".';
+}
+
+@if not map-has-key($color-blackwhite-palette, 'black') {
+  @error 'In $color-blackwhite-palette, you must have a color named "black".';
+}

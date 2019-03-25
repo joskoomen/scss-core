@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+/// Line height for items in a list.
+/// @type Number
+$list-lineheight: $paragraph-lineheight !default;
+
+/// Bottom margin for items in a list.
+/// @type Number
+$list-margin-bottom: $paragraph-margin-bottom !default;
+
+/// Bullet type to use for unordered lists (e.g., `square`, `circle`, `disc`).
+/// @type String
+$list-style-type: disc !default;
+
+/// Positioning for bullets on unordered list items.
+/// @type String
+$list-style-position: outside !default;
+
+/// Left (or right) margin for lists.
+/// @type Number
+$list-side-margin: rem-calc(20) !default;
+
+/// Left (or right) margin for a list inside a list.
+/// @type Number
+$list-nested-side-margin: rem-calc(20) !default;
+
+/// Bottom margin for `<dl>` elements.
+/// @type Number
+$defnlist-margin-bottom: rem-calc(16) !default;
+
+/// Font weight for `<dt>` elements.
+/// @type String
+$defnlist-term-weight: $global-weight-bold !default;
+
+/// Spacing between `<dt>` and `<dd>` elements.
+/// @type Number
+$defnlist-term-margin-bottom: rem-calc(4) !default;

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/// Default color for links.
+/// @type Color
+$links-color: map_get($color-primary-palette, 'primary') !default;
+
+/// Default color for links on hover.
+/// @type Color
+$links-color-hover: shade($links-color, 10%) !default;
+
+/// Default text decoration for links.
+/// @type String
+$links-text-decoration: none !default;
+
+/// Default text decoration for links on hover.
+/// @type String
+$links-text-decoration-hover: none !default;

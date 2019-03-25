@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+////
+/// @group breakpoints
+////
+
+/// A list of named breakpoints. You can use these with the `breakpoint()` mixin to quickly create media queries.
+/// @type Map
+$breakpoints: (
+    'xs' : 0,
+    'sm': 375px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1280px,
+    'hd': 1920px,
+) !default;
+
+
+/// All of the names in this list will be output as classes in your CSS, like `.xs-col-12`, `.md-col-6`, and so on. Each value in this list must also be in the `$breakpoints` map.
+/// @type List
+$breakpoint-classes: ('xs' 'sm' 'md' 'lg' 'xl') !default;
+
+
+$xs-up: '';
+$xs-only: '';
+
+@if map-has-key($breakpoints, 'xs') {
+  $xs-up: screen;
+  $xs-only: unquote('screen and #{breakpoint('xs only')}');
+}
+
+
+$sm-up: '';
+$sm-only: '';
+
+@if map-has-key($breakpoints, 'sm') {
+  $sm-up: unquote('screen and #{breakpoint('sm')}');
+  $sm-only: unquote('screen and #{breakpoint('sm only')}');
+}
+
+$md-up: '';
+$md-only: '';
+
+@if map-has-key($breakpoints, 'md') {
+  $md-up: unquote('screen and #{breakpoint('md')}');
+  $md-only: unquote('screen and #{breakpoint('md only')}');
+}
+
+$lg-up: '';
+$lg-only: '';
+
+@if map-has-key($breakpoints, 'lg') {
+  $lg-up: unquote('screen and #{breakpoint('lg')}');
+  $lg-only: unquote('screen and #{breakpoint('lg only')}');
+}
+
+$xl-up: '';
+$xl-only: '';
+
+@if map-has-key($breakpoints, 'xl') {
+  $xl-up: unquote('screen and #{breakpoint('xl')}');
+  $xl-only: unquote('screen and #{breakpoint('xl only')}');
+}
+
+$hd-up: '';
+
+@if map-has-key($breakpoints, 'hd') {
+  $hd-up: unquote('screen and #{breakpoint('hd')}');
+}

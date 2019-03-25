@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/// Finds the greatest common divisor of two integers.
+///
+/// @param {Number} $a - First number to compare.
+/// @param {Number} $b - Second number to compare.
+///
+/// @returns {Number} The greatest common divisor.
+@function gcd($a, $b) {
+  // From: http://rosettacode.org/wiki/Greatest_common_divisor#JavaScript
+  @if ($b != 0) {
+    @return gcd($b, $a % $b);
+  }
+  @else {
+    @return abs($a);
+  }
+}

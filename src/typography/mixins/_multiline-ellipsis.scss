@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+@mixin multiline-ellipsis($numlines: 2, $line-height: 1) {
+  line-height        : $line-height;
+  overflow           : hidden;
+  text-overflow      : ellipsis;
+  display            : -webkit-box;
+  -webkit-box-orient : vertical;
+  -webkit-line-clamp : $numlines;
+  max-height         : $line-height * $numlines;
+}

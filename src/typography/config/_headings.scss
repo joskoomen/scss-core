@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+/// Font family for header elements.
+/// @type String | List
+$header-font-family : $body-font-family !default;
+
+/// Font weight of headers.
+/// @type String
+$header-font-weight : $global-weight-normal !default;
+
+/// Font style (e.g. italicized) of headers.
+/// @type String
+$header-font-style : normal !default;
+
+/// Color of headers.
+/// @type Color
+$header-color : inherit !default;
+
+/// Line height of headers.
+/// @type Number
+$header-lineheight : 1.4 !default;
+
+/// Bottom margin of headers.
+/// @type Number
+$header-margin-bottom : 0.5rem !default;
+
+/// Styles for headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading styles.
+/// @type Map
+$header-styles : (
+    xs: (
+        'h1': ('font-size': 24),
+        'h2': ('font-size': 20),
+        'h3': ('font-size': 19),
+        'h4': ('font-size': 18),
+        'h5': ('font-size': 17),
+        'h6': ('font-size': 16),
+    ),
+    md: (
+        'h1': ('font-size': 48),
+        'h2': ('font-size': 40),
+        'h3': ('font-size': 31),
+        'h4': ('font-size': 25),
+        'h5': ('font-size': 20),
+        'h6': ('font-size': 16),
+    ),
+) !default;
+
+/// Text rendering method of headers.
+/// @type String
+$header-text-rendering : optimizeLegibility !default;
+
+/// Font size of `<small>` elements.
+/// @type Number
+$small-font-size : 80% !default;
+
+/// Color of `<small>` elements when placed inside headers.
+/// @type Color
+$header-small-font-color : map_get($color-blackwhite-palette, 'base') !default;

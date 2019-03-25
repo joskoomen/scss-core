@@ -1,0 +1,4 @@
+@mixin mask($file) {
+  -webkit-mask : url($file) no-repeat 50% 50%;
+  mask         : url($file) no-repeat 50% 50%;
+}

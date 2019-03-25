@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+////
+/// @group colors
+////
+
+/// Primary color palette. There must always be a color called `primary`.
+/// @type Map
+$color-primary-palette: (
+    'primary': #011B67,
+    'secondary': #007BFF,
+    'tertiary': #898592,
+    'success': #30C974,
+    'warning': #D0BB2B,
+    'alert': #C7182E,
+) !default;
+
+@if not map-has-key($color-primary-palette, 'primary') {
+  @error 'In $color-primary-palette, you must have a color named "primary".';
+}

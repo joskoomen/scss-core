@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+@function is-number($value) {
+  @return type-of($value) == 'number';
+}
