@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+/// Text color of `<blockquote>` elements.
+/// @type Color
+$blockquote-color: map_get($color-blackwhite-palette, 'black') !default;
+
+/// Padding inside a `<blockquote>` element.
+/// @type Number | List
+$blockquote-padding: rem-calc(9 20 0 19) !default;
+
+/// Side border for `<blockquote>` elements.
+/// @type List
+$blockquote-border: 1px solid map_get($color-blackwhite-palette, 'black') !default;

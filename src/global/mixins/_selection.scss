@@ -1,0 +1,3 @@
+@mixin selection {
+  &::selection, &::-moz-selection { @content }
+}

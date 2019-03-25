@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+$-jk-size: null;
+
+$-jk-zero-breakpoint: 'xs' !default;
+
+$-jk-breakpoints-keys: map-keys($breakpoints);
+
+@if nth(map-values($breakpoints), 1) != 0 {
+  @error 'The first key in the $breakpoints map must have a value of "0".';
+} @else {
+  $-jk-zero-breakpoint: nth(map-keys($breakpoints), 1);
+}

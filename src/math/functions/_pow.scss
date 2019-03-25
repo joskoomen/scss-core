@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@function pow($base, $exponent, $prec: 16) {
+  @if (floor($exponent) != $exponent) {
+    $prec2 : pow(10, $prec);
+    $exponent: round($exponent * $prec2);
+    $denominator: gcd($exponent, $prec2);
+    @return nth-root(pow($base, $exponent / $denominator), $prec2 / $denominator, $prec);
+  }
+  
+  $value: $base;
+  @if $exponent > 1 {
+    @for $i from 2 through $exponent {
+      $value: $value * $base;
+    }
+  }
+  @else if $exponent < 1 {
+    @for $i from 0 through -$exponent {
+      $value: $value / $base;
+    }
+  }
+  
+  @return $value;
+}

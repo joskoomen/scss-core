@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+$keystroke-font : $font-stack-consolas;
+$keystroke-color : map_get($color-blackwhite-palette, 'black');
+$keystroke-background : map_get($color-blackwhite-palette, 'white');
+$keystroke-padding : rem-calc(2 4 0);
+$keystroke-radius : $global-radius;

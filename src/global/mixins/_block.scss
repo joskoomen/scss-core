@@ -1,0 +1,4 @@
+@mixin block($position : relative) {
+  display  : block;
+  position : $position;
+}

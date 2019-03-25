@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@function set-map($map) {
+  $newmap : ();
+  @each $value in $map {
+    $new : ($value: $value);
+    $newmap : map-merge($newmap, $new);
+  }
+  @return $newmap;
+}

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+/// Maximum width of a divider.
+/// @type Number
+$hr-width : 100% !default;
+
+/// Default border for a divider.
+/// @type List
+$hr-border : 1px solid map_get($color-blackwhite-palette, 'black') !default;
+
+/// Default margin for a divider.
+/// @type Number | List
+$hr-margin : rem-calc(20) auto !default;

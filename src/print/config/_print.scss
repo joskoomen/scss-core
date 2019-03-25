@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+/// The largest named breakpoint in which to include print as a media type
+/// @type Keyword
+$print-breakpoint : lg !default;
+
+/// If `true`, all elements will have transparent backgrounds when printed, to save on ink.
+/// @type Boolean
+/// @group print
+$print-transparent-backgrounds: true !default;
+$print-hrefs: true !default;

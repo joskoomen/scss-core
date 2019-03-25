@@ -1,2 +1,2 @@
-# scss-core
-Scss Core
+# Scss | Core
+
