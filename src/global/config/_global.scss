@@ -6,28 +6,28 @@
 
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
 /// @type Number
-$global-font-size : 100% !default;
+$global-font-size: 62.5% !default;
 
 /// Default line height for all type. `$global-lineheight` is 24px while `$global-font-size` is 16px
 /// @type Number
-$global-lineheight : 1.5 !default;
+$global-lineheight: 1.5 !default;
 
 /// Default max width. By default added to grid container
 /// @type Number
-$global-max-width : rem-calc(1200) !default;
+$global-max-width: rem-calc(1200) !default;
 
 /// Global font weight used for normal type.
 /// @type Keyword | Number
-$global-weight-normal : normal !default;
+$global-weight-normal: normal !default;
 
 /// Global font weight used for bold type.
 /// @type Keyword | Number
-$global-weight-bold : bold !default;
+$global-weight-bold: bold !default;
 
 /// Global value used for all elements that have a border radius.
 /// @type Number
-$global-radius : 0 !default;
+$global-radius: 0 !default;
 
 /// Button cursor's value, `auto` by default
 /// @type Keyword
-$global-button-cursor : auto !default;
+$global-button-cursor: auto !default;

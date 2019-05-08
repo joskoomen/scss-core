@@ -4,9 +4,14 @@
 /// @group body
 ////
 
+
 /// Background color of the body.
 /// @type Color
 $body-background: map_get($color-blackwhite-palette, 'white') !default;
+
+/// Font size
+/// @type Unit
+$body-font-size: rem-calc(16) !default;
 
 /// Text color of the body.
 /// @type Color
