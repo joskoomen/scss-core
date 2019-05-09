@@ -11,5 +11,6 @@
 @include joskoomen-grid();
 // include helper packages or other private/external modules
 
-@import "layouts";
+@import "ui";
 @import "components";
+@import "layouts";
